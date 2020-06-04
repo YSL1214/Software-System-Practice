@@ -100,7 +100,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="page-header" style="margin-bottom: 0px;">
+				<div class="page-header" style="margin-bottom: 0;">
 					<h3>图片识别</h3>
 				</div>
 			</div>
@@ -108,7 +108,7 @@
 	</div>
 	<div class="container">
 		<div class="form-group">
-		<a href="javascript:;" class="file">&nbsp;&nbsp;上&nbsp;传&nbsp;图&nbsp;片&nbsp;&nbsp;
+		<a href="javascript:;" class="file">&nbsp;上&nbsp;传&nbsp;图&nbsp;片&nbsp;&nbsp;
 		    <input type="file" name="" id="img_upload">
 		</a>
 		<p id="img_area"></p>
@@ -146,6 +146,7 @@
 		$(document).ready(function() {
 			$("#submit").click(function() {
 				var kw = $("#kw").val();
+				var kw2 = encodeURIComponent(kw);
 				if(kw =="" || kw == null){
 					alert0("输入不能为空！");
 					return;
@@ -156,12 +157,10 @@
 					//请求的媒体类型
 					contentType : "application/json;charset=UTF-8",
 					//请求地址
-					url : "search?kw=" + kw,
-					//数据，json字符串
-					//data : JSON.stringify(list),
+					url : "search?kw=" + kw2,
 					//请求成功
 					success : function(data) {
-						//console.log(data);
+						console.log(data.name);
 						alert1("查询成功！");
 						$("#name").html(data.name);
 						$("#category").html(data.category);

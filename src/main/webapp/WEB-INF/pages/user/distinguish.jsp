@@ -146,6 +146,7 @@
 		$(document).ready(function() {
 			$("#submit").click(function() {
 				var kw = $("#kw").val();
+				var kw2 = encodeURIComponent(kw);
 				if(kw =="" || kw == null){
 					alert0("输入不能为空！");
 					return;
@@ -156,12 +157,9 @@
 					//请求的媒体类型
 					contentType : "application/json;charset=UTF-8",
 					//请求地址
-					url : "search?kw=" + kw,
-					//数据，json字符串
-					//data : JSON.stringify(list),
+					url : "search?kw=" + kw2,
 					//请求成功
 					success : function(data) {
-						//console.log(data);
 						alert1("查询成功！");
 						$("#name").html(data.name);
 						$("#category").html(data.category);
